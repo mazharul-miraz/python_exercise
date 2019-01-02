@@ -1,0 +1,57 @@
+print('WELLCOME TO BANK OF EVIL')
+restart = ('Y')
+chance = 3
+blance = 990
+while chance >= 0:
+	pin = int(input('Please Enter your  digit pin: '))
+	if pin ==(1234):
+		print('You Entered Your Pin Correctly')
+		while restart not in ('n','N','NO','no'):
+			print('Please Press 1 For your Blance\n')
+			print('Please Press 2 For your withdraw\n')
+			print('Please Press 3 For your Pay\n')
+			print('Please Press 4 For Return your card \n')
+			option = int(input('What Would You Like To Choose?'))
+			if option == 1:
+				print('Your Blance Is',blance,'\n')
+				restart = input('What Would You Like To Go Back ?')
+				if restart in ('n','N','NO','no'):
+					print('Thank You')
+					break
+			elif option == 2:
+				option2 = ('y') #???
+				withdrawl = float(input('How Much Would you like to withdraw ?\n$50/$100/$200/$500/$1000\nAmount :'))
+				if withdrawl in [50,100,200,500,1000]: 
+					blance = blance - withdrawl
+					print('\n Your Blance Is Now',blance)
+					restart = input('Would You Like To Go Back? ')
+				if restart in ('n','N','NO','no'):
+					print('Thank You')
+					break
+				elif withdrawl != [50,100,200,500,1000]:
+					print('Invalid Amount,Please Re-try\n')
+					restart = ('Y')
+				elif withdrawl == 1:
+					withdrawl = float(input('Please Enter Desired Amount: '))
+			elif option == 3:
+				Pay_in = float(input('How Much Would You Like To Pay In? '))
+				blance = blance + Pay_in
+				print('\nYour Blance is now',blance)
+				restart = input('Would You like to go back ? ')
+				if restart in ('n','N','NO','no'):
+					print('Thank You')
+					break
+			elif option == 4:
+				print('Please wait while your card is Returned....')
+				print('Thank you for using our both\n')
+				break
+			else:
+				print('Please enter a correct number. \n')
+				restart = ('Y')
+	elif pin != ('1234'):
+		print('Incorrect Password')
+		chance = chance - 1
+		if chance == 0 :
+			print('\nNo more tries')
+			break 
+
