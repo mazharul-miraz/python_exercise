@@ -1,0 +1,85 @@
+routes = []
+
+
+
+def find_paths(node, cities, path, distance):
+
+   # Add node
+
+   path.append(node)
+
+
+   # Calculate path length
+
+   if len(path) > 1:
+
+       distance += cities[path[i]][node]
+
+
+   # If path contains all cities and is not a dead end,
+
+   # add path from last to first city and return.
+
+   if (len(cities) == len(path)) and (path[0] in cities[path[-1]]):
+
+       global routes
+
+       path.append(path[0])
+
+       distance += cities[path[i]][path[0]]
+
+       print (path)
+
+       routes.append([distance,path])
+
+       return
+
+   # paths for all possible cities not yet used
+
+   for city in cities:
+
+       if (city not in path) and (node in cities[city]):
+
+           find_paths(city, dict(cities), list(path), distance)
+
+
+
+cities = {
+
+   'L': {'L': 0, 'J': 61, 'A': 140, 'C': 106, 'P': 93},
+
+   'J': {'L': 61, 'J': 0, 'A': 80, 'C': 149, 'P': 154},
+
+   'A': {'L': 140, 'J': 80, 'A': 0, 'C': 229, 'P': 235},
+
+   'C': {'L': 106, 'J': 149, 'A': 229, 'C': 0, 'P': 75},
+
+   'P': {'L': 93, 'j': 154, 'A': 235, 'C': 75, 'P': 0},
+
+}
+
+start = input("Enter the starting point:-\n")
+
+print("START: ",start)
+
+if(start == 'J'):
+
+   i=-2;
+
+else:
+
+   i=-1;
+
+find_paths(start, cities, [], 0)
+
+print ("\n")
+
+routes.sort()
+
+if len(routes) != 0 and start=='J':
+
+      print ("Shortest route: %s" % routes[0])
+
+else:
+
+   print ("Shortest route: ",routes[0][1])
